@@ -14,7 +14,7 @@ export default function App() {
 <div className="App">
 
 <header>
-  <h1>Memory Game</h1>
+  <h1>Memory Gsdfame</h1>
   <nav>
     <a href="#instructions">Instructions</a>
     <a href="#game-board">Game</a>
@@ -32,12 +32,12 @@ export default function App() {
     </div>
 </main>
 
-<footer className="clearfix">
+{/* <footer className="clearfix">
   <p className="copyright">COPYRIGHT 2017</p>
   <p className="message">
     Created with &hearts; by <span className="name">GA</span>
   </p>
-</footer>
+</footer> */}
 
 </div>
   );

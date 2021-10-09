@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.css";
-import Card from "./components/card";
-import cardData from "./components/cardData";
+import Card from "./components/Card";
+import cardData from "./components/CardData";
 
 const cards=cardData.map((record, index)=>{
   // return <Card key={index} title={record.title} img={record.img} text={record.text} url={record.url}/>
@@ -28,7 +28,7 @@ export default function App() {
     <div id="message"></div>
     <div id="game-board" class="board">
         {/* CARDS WILL BE RENDERED HERE */}
-        <Card />
+        {cards}
     </div>
 </main>
 

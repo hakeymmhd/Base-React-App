@@ -1,2 +1,0 @@
-(this["webpackJsonpreact-projects"]=this["webpackJsonpreact-projects"]||[]).push([[0],{3:function(e,t,n){e.exports=n(9)},8:function(e,t,n){},9:function(e,t,n){"use strict";n.r(t);var r=n(0),a=n.n(r),c=n(2),o=n.n(c);n(8);function s(){return a.a.createElement("div",{className:"App"},a.a.createElement("h1",null,"My WeatherIcons App"))}var l=document.getElementById("root");o.a.render(a.a.createElement(a.a.StrictMode,null,a.a.createElement(s,null)),l)}},[[3,1,2]]]);
-//# sourceMappingURL=main.91f7b6ce.chunk.js.map

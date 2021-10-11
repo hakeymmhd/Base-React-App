@@ -3,16 +3,27 @@ import "./styles.css";
 import ImageData from "./imageData";
 
 export default function App(img, city) {
-  const initial = {
-    img: ImageData[0].img,
-    city: ImageData[0].city,
-  }
-  const [imageState, setImageState] = useState(initial);
-  console.log(imageState.city)
+  // const initial = {
+  //   img: ImageData[0].img,
+  //   city: ImageData[0].city,
+  // }
+  // const [imageState, setImageState] = useState(() => {return initial});      
+  const [image, setImage] = useState(() => {
+    console.log("run image");
+    return ImageData[0].img} );       
+
+  const [CT, setCity] = useState(() => {
+    console.log("run city");
+    return ImageData[0].city} );
+    
+  console.log(CT);          // why does this run twice?
   const arr = ImageData.map((record, index) => {
     return (
     <>
-    <img onClick = {() => setImageState({img: record.img, city: record.city})}
+    <img onClick = {() => {
+      setImage(record.img)
+      setCity(record.city)
+    }}
     src={record.img}
     className="thumb"
     alt={record.city}
@@ -20,13 +31,11 @@ export default function App(img, city) {
     </>)
   });
 
-
-  console.log(imageState.city)
   const bigImage =
       <img 
-      src={imageState.img}
+      src={image}
       id="bigimage"
-      alt={imageState.city}
+      alt={CT}
       />
 
 

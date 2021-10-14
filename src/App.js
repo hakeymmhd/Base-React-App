@@ -1,10 +1,11 @@
 import React from "react";
-import "./styles.css";
+import "./App.css";
+import UncontrolledForm from './components/UncontrolledForm';
 
 export default function App() {
   return (
     <div className="App">
-      <h1>My WeatherIcons App</h1> 
+      <UncontrolledForm/>
     </div>
   );
 }

@@ -41,58 +41,97 @@
 
 // }
 
-import { useEffect, useState } from 'react'
+
+
+// ---------
+// import { useEffect, useState } from 'react'
+
+// export default function Counter() {
+
+//   const [counter, setCounter] = useState(0);
+//   const [toggle, setToggle] = useState(false);
+//   let interval = null;
+
+//   const startTimer = () => {
+//     clearInterval(interval);
+//     interval = setInterval(()=>{
+//       setCounter((prevState)=>{
+//         return prevState+1
+//       });
+//     }, 2000);
+//     console.log('interval - startTimer', interval)
+//   };
+  
+//   const pauseTimer = (event) => {
+//     console.log('interval - stopTimer', interval)
+//     clearInterval(interval);
+//   };
+
+//   useEffect(()=>{
+//     console.log('useEffect triggered')
+//     startTimer();
+//     return ()=>{
+//       console.log('cleaning up') //runs right after next render
+//       clearInterval(interval)
+//     }
+//   })
+
+//   const handleStartClick=()=>{
+//     setToggle(false)
+//     startTimer()
+//   }
+
+//   const handlePauseClick=()=>{
+//     setToggle(true)
+//     pauseTimer()
+//   }
+
+//   console.log('rendering Counter')
+//   return (
+//     <>
+//       <div>Counter: {counter}</div>
+//       {toggle ? (
+//       <button onClick={handleStartClick}>Start Timer</button>
+//     ) : (
+//       <button onClick={handlePauseClick}>Pause Timer</button>
+//     )}
+//     </>
+//   );
+
+// }
+
 
 export default function Counter() {
 
   const [counter, setCounter] = useState(0);
-  const [toggle, setToggle] = useState(false);
-  let interval = null;
+  const [intervalId,setIntervalId] = useState()
+  const [toggle,setToggle]=useState()
 
-  const startTimer = () => {
-    clearInterval(interval);
-    interval = setInterval(()=>{
-      setCounter((prevState)=>{
-        return prevState+1
-      });
-    }, 2000);
-    console.log('interval - startTimer', interval)
-  };
-  
-  const pauseTimer = (event) => {
-    console.log('interval - stopTimer', interval)
-    clearInterval(interval);
-  };
+  const startTimer=()=>{
+    const interval=setInterval(()=>{
+      setCounter(prevState=>prevState+1)
+    },1000)
+    setIntervalId(interval)
+    setToggle(false)
+  }
+
+  const stopTimer=()=>{
+    clearInterval(intervalId)
+    setToggle(true)
+  }
 
   useEffect(()=>{
-    console.log('useEffect triggered')
-    startTimer();
-    return ()=>{
-      console.log('cleaning up') //runs right after next render
-      clearInterval(interval)
-    }
-  })
-
-  const handleStartClick=()=>{
-    setToggle(false)
     startTimer()
-  }
+  },[])
 
-  const handlePauseClick=()=>{
-    setToggle(true)
-    pauseTimer()
-  }
-
-  console.log('rendering Counter')
   return (
     <>
       <div>Counter: {counter}</div>
       {toggle ? (
-      <button onClick={handleStartClick}>Start Timer</button>
-    ) : (
-      <button onClick={handlePauseClick}>Pause Timer</button>
-    )}
+        <button onClick={startTimer}>Start Timer</button>
+      ) : (
+        <button onClick={stopTimer}>Pause Timer</button>
+      )}
     </>
   );
-
 }

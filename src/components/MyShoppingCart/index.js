@@ -13,9 +13,7 @@ function MyShoppingCart(props) {
   return (
     <div className="MyShoppingCart">
       <h2>Your Cart!</h2>
-      <ul>
-        {things}
-       </ul>
+      {things}
     </div>
   );
 }

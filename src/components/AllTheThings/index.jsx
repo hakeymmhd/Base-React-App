@@ -1,7 +1,6 @@
 import React from 'react';
 
 function AllTheThings(props) {
-
   console.log('this is props  from ALlTheThings', props);
 
   let things = props.products.map((d, i) => {
@@ -12,12 +11,11 @@ function AllTheThings(props) {
     );
   });
 
+
   return (
     <div className="AllTheThings">
        <h2>Put these in your cart!</h2>
-       <ul>
-        {things}
-       </ul>
+       {things}
     </div>
       
 

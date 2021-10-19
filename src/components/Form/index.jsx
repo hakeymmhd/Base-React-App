@@ -5,6 +5,7 @@ function Form() {
   const itemName = useRef();
   const itemPrice = useRef();
 
+  console.log(items);
   const handleSubmit = () => {
     console.log("clicked!");
     console.log(itemPrice.current.value)
@@ -12,7 +13,7 @@ function Form() {
         name: `${itemName.current.value}`,
         price: itemPrice.current.value,
       })
-      console.log(items);
+      
   }
  
   return (

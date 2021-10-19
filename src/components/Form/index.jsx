@@ -1,25 +1,26 @@
 import React, {useState, useRef} from "react";
 
-function Form(props) {
-  const [products, setProducts] = useState({name: '', price: ''});
+function Form() {
+  const [items, setItems] = useState({name: '', price: 0});
   const itemName = useRef();
   const itemPrice = useRef();
 
-  const handleClick = () => {
+  const handleSubmit = () => {
     console.log("clicked!");
-      setProducts({
-        name: itemName.current.value,
+    console.log(itemPrice.current.value)
+      setItems({...items,
+        name: `${itemName.current.value}`,
         price: itemPrice.current.value,
       })
-   console.log(products);
+      console.log(items);
   }
-
+ 
   return (
     <div className="Form">
       <h2>Form goes here</h2>
-      <input type="text" placeholder="product name" ref={itemName} />
-      <input type="text" placeholder="price" ref={itemPrice} />
-      <input type="submit" onClick={handleClick} />
+      <input type="text" ref={itemName} placeholder="product name" />
+      <input type="text" ref={itemPrice} placeholder="price" />
+      <input type="submit" onClick={handleSubmit} />
     </div>
   );
 }

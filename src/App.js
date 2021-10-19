@@ -28,7 +28,8 @@ export default function App() {
   return (
     <div className="App">
       <h1>Big Time Shopping</h1>
-      <Form products={products} handleClick={addToCart}/>
+      {/* <Form products={products} handleClick={addToCart}/> */}
+      <Form />
       <div className="products">
         <AllTheThings products={products} handleClick={addToCart}/>
         <MyShoppingCart cart={cart} handleClick={removeFromCart} />

@@ -62,13 +62,6 @@ export default function App() {
         </div>      
       </div>
 
-
-      {/* <Form products={products} handleClick={addToCart}/> */}
-      {/* <Form /> */}
-      {/* <div className="products"> */}
-        {/* <AllTheThings products={products} handleClick={addToCart}/> */}
-        {/* <MyShoppingCart cart={cart} handleClick={removeFromCart} /> */}
-      {/* </div> */}
     </div>
   );
 }

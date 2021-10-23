@@ -3,22 +3,18 @@ import Home from '../Home/Home';
 import './App.css';
 import { Route, Link, Switch, Redirect } from "react-router-dom"
 import Currencies from '../Currencies/Currencies';
+import Currency from '../Currency';
 
-function App() {
-  const [price, setPrice] = useState(null);
-
-  const handleClick = price => {
-    setPrice(price);
-  };
-
+function App(props) {
+  const [currency, setCurrency] = useState("");
   return (
     <div>
       <nav>
-        <Link to="/">
+        <Link onClick={()=>setCurrency("")} to="/">
           <img src="https://en.bitcoin.it/w/images/en/2/29/BC_Logo_.png" alt="" />
           <h1>Bitcoin prices</h1>
         </Link>
-        <Link to="/currencies">Currencies</Link>
+        <Link onClick={()=>setCurrency("")} to="/currencies">{`Currencies > ${currency}`}</Link>
       </nav>
       <main>
         <Switch>
@@ -26,15 +22,12 @@ function App() {
           <Home />
         </Route>
         <Route path='/currencies'>
-          <Currencies />
+          <Currencies setCurrency={setCurrency}/>
         </Route>
-
-        <Route path='/home'>  
+        <Route path='/price/:currency'>
+            <Currency/>
+        </Route>
         <Redirect to='/'/>
-        </Route>
-        <Route path='/home'>
-        <Redirect to='/'/>
-        </Route>
         </Switch>
       </main>
     </div>

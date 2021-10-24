@@ -10,9 +10,9 @@ export default function App() {
   const [products, setProducts] = useState(productsArr);
   const [cart, setCart] = useState([]);
 
-  const itemName = useRef();
-  const itemPrice = useRef();
-  const itemDesc = useRef();
+  // const itemName = useRef();
+  // const itemPrice = useRef();
+  // const itemDesc = useRef();
 
   // create an addToCart function that takes in a product as a param
   // using the ...spread operator add the product to the cart array

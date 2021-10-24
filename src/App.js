@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import './styles.css';
 import AllTheThings from './components/AllTheThings/index';
 import MyShoppingCart from './components/MyShoppingCart/index';
-// import Form from './components/Form/index';
+import Form from './components/Form/index';
 import productsArr from './products';
 
 export default function App() {
@@ -28,21 +28,22 @@ export default function App() {
         setCart(cartArr)
     };
 
-    const handleSubmit = () => {
-      // console.log("clicked!");
-      // console.log(itemPrice.current.value)
-        setProducts([
-          {
-            name: `${itemName.current.value}`,
-            price: itemPrice.current.value,
-            description: `${itemDesc.current.value}`
-        }, ...products])}
+    // const handleSubmit = () => {
+    //   // console.log("clicked!");
+    //   // console.log(itemPrice.current.value)
+    //     setProducts([
+    //       {
+    //         name: `${itemName.current.value}`,
+    //         price: itemPrice.current.value,
+    //         description: `${itemDesc.current.value}`
+    //     }, ...products])}
 
     // console.log("app log: " + products);
   return (
     <div className="App">
       <h1>Big Time Shopping</h1>  
-      <div className="wrapper">
+      <Form addToList={setProducts} list={products}/>
+      {/* <div className="wrapper">
         <div className="form-signin">
         <h2 class="form-signin-heading">Form goes here</h2>
           <input type="text" ref={itemName} placeholder="product name" />
@@ -50,8 +51,7 @@ export default function App() {
           <input type="text" ref={itemDesc} placeholder="description" />
           <button className="btn btn-lg btn-primary btn-block" onClick={handleSubmit}>Submit</button>
         </div>
-        
-      </div>
+      </div> */}
     
       <div className="products">
         <div className="AllTheThings">

@@ -4,7 +4,7 @@ import productsArr from '../../products';
 import MyShoppingCart from '../MyShoppingCart/index';
 
 function Form(props) {
-  const [products, setProducts] = useState(productsArr);
+  const [item, setItem] = useState({name: '', price: 0, description: ''});
   const [cart, setCart] = useState([]);
   
   const itemName = useRef();
@@ -20,38 +20,66 @@ function Form(props) {
     setCart(cartArr)
   };
 
-  console.log(products);
+  console.log(item);
   const handleSubmit = () => {
-    // props.handleClick(products);
+    // props.handleClick(item);
     console.log("clicked!");
-    console.log(itemPrice.current.value)
-      setProducts([
-        {
-          name: `${itemName.current.value}`,
-          price: itemPrice.current.value,
-          description: "test"
-      }, ...products])
-      
+    // console.log(itemPrice.current.value)
+    //   setItem([
+    //     {
+    //       name: `${itemName.current.value}`,
+    //       price: itemPrice.current.value,
+    //       description: "test"
+    //   }, ...item])
+    props.addToList([item, ...props.list])
   }
- 
+
+  const handleNameChange = (e) => {
+    console.log(e.target);
+    setItem({...item, name: `${e.target.value}`})
+  }
+
+  const handlePriceChange = (e) => {
+    console.log(e.target.value);
+    setItem({...item, price: e.target.value})
+  }
+
+  const handleDescChange = (e) => {
+    console.log(e.target.value);
+    setItem({...item, description: e.target.value})
+  }
+
+  function onNameBlur() {
+
+  }
+
+  function onPriceBlur() {
+
+  }
+
+  function onDescBlur() {
+
+  }
+
   return (
     <div>
       <div className="wrapper">
-        <h2>Form goes here</h2>
-        <input type="text" ref={itemName} placeholder="product name" />
-        <input type="text" ref={itemPrice} placeholder="price" />
+        <h2>Controlled Form </h2>
+        <input type="text" name='name' placeholder="product name" onChange={handleNameChange} onBlur={onNameBlur} />
+        <input type="text" name='price' placeholder="price" onChange={handlePriceChange} onBlur={onPriceBlur} />
+        <input type="text" name='description' placeholder="description" onChange={handleDescChange} onBlur={onDescBlur} />
         <input type="submit" onClick={handleSubmit} />
       </div>
     
       
-      <div className="products">
+      {/* <div className="item">
         <div className="AllTheThings">
-          <AllTheThings products={products} handleClick={addToCart}/>
+          <AllTheThings item={item} handleClick={addToCart}/>
         </div>
         <div className="MyShoppingCart">
           <MyShoppingCart cart={cart} handleClick={removeFromCart} />
         </div>      
-      </div>
+      </div> */}
     </div>
   );
 }

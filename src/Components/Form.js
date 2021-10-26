@@ -19,13 +19,9 @@ function reducer (state, action) {
     case ACTIONS.addDesc:
       return state = {...state, description: action.payload.value};
 
-    case ACTIONS.clearField:
+    default:
       return state = {name: '', price: '', description: ''};
   }
-}
-
-function newItem(item) {
-  return {name: item.name, price: item.price, description: item.description}
 }
 
 const Form = (props) => {

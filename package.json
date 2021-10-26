@@ -1,6 +1,5 @@
 {
-  "name": "react-projects",
-  "homepage": "https://hakeymmhd.github.io/Base-React-App",
+  "name": "styles-4-ways-starter",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
@@ -8,15 +7,16 @@
   "dependencies": {
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-scripts": "3.4.3"
+    "react-router": "5.2.0",
+    "react-router-dom": "5.2.0",
+    "react-scripts": "3.4.3",
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
     "typescript": "3.8.3"
   },
   "scripts": {
     "start": "react-scripts start",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

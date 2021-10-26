@@ -1,5 +1,5 @@
 // import useState
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import './styles.css';
 // import the required components
 import AllTheThings from './Components/AllTheThings';
@@ -29,7 +29,7 @@ export default function App() {
   return (
     <div className="App">
       <h1>Big Time Shopping</h1>
-      <Form handleSubmit={addToProducts} />
+      <Form handleSubmit={addToProducts} title='Add item to list'/>
       <div className="products">
         <AllTheThings products={products} handleClick={addToCart} />
         <MyShoppingCart cart={cart} handleClick={removeFromCart} />

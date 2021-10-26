@@ -1,14 +1,26 @@
-import React, { useState, useReducer } from 'react';
-
+import React, { useReducer } from 'react';
 
 const ACTIONS = {
-  addItem: "ADD-NAME",
+  addName: "ADD-NAME",
+  addPrice: "ADD-PRICE",
+  addDesc: "ADD-DESCRIPTION",
+  clearField: "CLEAR",
 }
 
 function reducer (state, action) {
   switch (action.type) {
-    case ACTIONS.addItem:
-      return [...state, newItem(action.payload)]
+    case ACTIONS.addName:
+      console.log('REDUCER payload: ', action.payload)
+      return state = {...state, name: action.payload.value};
+
+    case ACTIONS.addPrice:
+      return state = {...state, price: action.payload.value};
+
+    case ACTIONS.addDesc:
+      return state = {...state, description: action.payload.value};
+
+    case ACTIONS.clearField:
+      return state = {name: '', price: '', description: ''};
   }
 }
 
@@ -18,28 +30,44 @@ function newItem(item) {
 
 const Form = (props) => {
   const [state, dispatch] = useReducer(reducer, [{name: '', price: 0, description: ''}])
-  const [product, setProduct] = useState({ name: '', price: '' });
-  console.log('product - ', product);
+  // const [product, setProduct] = useState({ name: '', price: '' });
+  // console.log('product - ', product);
+  console.log('rstate:', state);
+  const handleSubmit = () => {
+    props.handleSubmit(state);
+    
+    dispatch({ type: ACTIONS.clearField});
+    console.log('handleSubmit');
+    // setProduct({ name: '', price: '', description: '' });
+  };
 
-const handleSubmit = () => {
-  props.handleSubmit(product);
-  console.log('handleSubmit');
-  setProduct({ name: '', price: '', description: '' });
-};
+  const handleChange = (e) => {
+    e.preventDefault();
+    const name = e.target.name;
+    const value = e.target.value;
+    
+    if (name === "name") {
+      dispatch({ type: ACTIONS.addName, payload: { name, value }}); 
+      console.log(state)
+    }
+    
+    else if (name === "price") {
+      dispatch({ type: ACTIONS.addPrice, payload: { name, value }}); 
+    }
 
-const handleChange = (e) => {
-  e.preventDefault();
-  const name = e.target.name;
-  const value = e.target.value;
-  dispatch({ type: ACTIONS.addItem, payload: { name, value }}); 
-  console.log('handleChange - event', e.target.computedName);
-  console.log('handleChange - value', e.target.value);
-  console.log(`Payload name: ${name} Payload value: ${value}`);
-  // setProduct({
-  //   ...product,
-  //   [name]: value
-  // });
-};
+    else if (name === "description") {
+      dispatch({ type: ACTIONS.addDesc, payload: { name, value }}); 
+    }
+    
+    
+    console.log('handleChange - event', e.target.computedName);
+    console.log('handleChange - value', e.target.value);
+    console.log(`Payload name: ${name} Payload value: ${value}`);
+    // setProduct({
+    //   ...product,
+    //   [name]: value
+    // });
+  };
 
   return (
     <div className="wrapper">
@@ -47,7 +75,7 @@ const handleChange = (e) => {
         <h2 className="form-signin-heading">{props.title}</h2>
         <input
           onChange={handleChange}
-          // value={itemName}
+          value={state.name}
           type="text"
           className="form-control"
           name="name"
@@ -55,7 +83,7 @@ const handleChange = (e) => {
         />
         <input
           onChange={handleChange}
-          // value={itemPrice}
+          value={state.price}
           type="text"
           className="form-control"
           name="price"
@@ -63,7 +91,7 @@ const handleChange = (e) => {
         />
           <input
           onChange={handleChange}
-          // value={itemDescription}
+          value={state.description}
           type="text"
           className="form-control"
           name="description"
@@ -71,7 +99,10 @@ const handleChange = (e) => {
         />
         <button
           className="btn btn-lg btn-primary btn-block"
-          onClick={() => handleSubmit()}
+          onClick={() => {
+            handleSubmit();
+            
+          }}
         >
           Submit
         </button>

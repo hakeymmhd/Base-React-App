@@ -7,30 +7,30 @@ const ACTIONS = {
   clearField: "CLEAR",
 }
 
-function reducer (state, action) {
+function reducer (item, action) {
   switch (action.type) {
     case ACTIONS.addName:
       console.log('REDUCER payload: ', action.payload)
-      return state = {...state, name: action.payload.value};
+      return item = {...item, name: action.payload.value};
 
     case ACTIONS.addPrice:
-      return state = {...state, price: action.payload.value};
+      return item = {...item, price: action.payload.value};
 
     case ACTIONS.addDesc:
-      return state = {...state, description: action.payload.value};
+      return item = {...item, description: action.payload.value};
 
     default:
-      return state = {name: '', price: '', description: ''};
+      return item = {name: '', price: '', description: ''};
   }
 }
 
 const Form = (props) => {
-  const [state, dispatch] = useReducer(reducer, [{name: '', price: 0, description: ''}])
+  const [item, dispatch] = useReducer(reducer, [{name: '', price: 0, description: ''}])
   // const [product, setProduct] = useState({ name: '', price: '' });
   // console.log('product - ', product);
-  console.log('rstate:', state);
+  console.log('ritem:', item);
   const handleSubmit = () => {
-    props.handleSubmit(state);
+    props.handleSubmit(item);
     
     dispatch({ type: ACTIONS.clearField});
     console.log('handleSubmit');
@@ -44,7 +44,7 @@ const Form = (props) => {
     
     if (name === "name") {
       dispatch({ type: ACTIONS.addName, payload: { name, value }}); 
-      console.log(state)
+      console.log(item)
     }
     
     else if (name === "price") {
@@ -71,7 +71,7 @@ const Form = (props) => {
         <h2 className="form-signin-heading">{props.title}</h2>
         <input
           onChange={handleChange}
-          value={state.name}
+          value={item.name}
           type="text"
           className="form-control"
           name="name"
@@ -79,7 +79,7 @@ const Form = (props) => {
         />
         <input
           onChange={handleChange}
-          value={state.price}
+          value={item.price}
           type="text"
           className="form-control"
           name="price"
@@ -87,7 +87,7 @@ const Form = (props) => {
         />
           <input
           onChange={handleChange}
-          value={state.description}
+          value={item.description}
           type="text"
           className="form-control"
           name="description"

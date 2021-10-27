@@ -1,5 +1,5 @@
 // import useState
-import React, { useState, useReducer } from 'react';
+import React, { useState } from 'react';
 import './styles.css';
 // import the required components
 import AllTheThings from './Components/AllTheThings';

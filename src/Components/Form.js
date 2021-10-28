@@ -25,7 +25,7 @@ function reducer (item, action) {
 }
 
 const Form = (props) => {
-  const [item, dispatch] = useReducer(reducer, [{name: '', price: 0, description: ''}])
+  const [item, dispatch] = useReducer(reducer, {name: '', price: 0, description: ''})
   // const [product, setProduct] = useState({ name: '', price: '' });
   // console.log('product - ', product);
   console.log('ritem:', item);

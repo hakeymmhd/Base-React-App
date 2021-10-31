@@ -1,32 +1,31 @@
 import React, { useState } from "react";
-import { Route, Switch, Redirect } from "react-router-dom"
-import Home from "./Home"
-import Dashboard from "./Dashboard"
-import About from "./About"
-import Stock from "./Stock"
-import Stocks from "./stock-data"
+import { Route, Switch, Redirect } from "react-router-dom";
+import Home from "./Home.jsx";
+import About from "./About";
+import Results from "./Result.js";
+
+// import Result from "./Result";
 
 function Main() {
 
-  const [stock, setStock] = useState("");
+  // const [stock, setStock] = useState("");
   return (
     <main>
-      {/* <Switch> */}
-      <Route exact path="/" component={Home} >
-        {/* <Dashboard /> */}
-      </Route> 
-      <Route path="/about" component={About} />
-      
-      <Route path="/stocks/:symbol" >
-      {/* <Dashboard /> */}
-      </Route>
+      <Switch>
+        <Route exact path="/" component={Home} >
+        </Route> 
 
-      <Route path="/stocks" component={Dashboard} >
-      {/* <Dashboard setStock={setStock}/> */}
-      </Route>
 
-      <Redirect to="/stocks" />
-      {/* </Switch> */}
+        <Route path="/about" component={About} />
+
+        {/* <Route path="/home" component={Home} >
+        </Route> */}
+        
+        <Route exact path="/results" component={Results} >
+        </Route>
+
+        <Redirect to="/" />
+      </Switch>
     </main>
   )
 }

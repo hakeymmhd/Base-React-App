@@ -1,8 +1,9 @@
 import React from "react";
 import MovieList from "./MovieList"
 import { Link } from "react-router-dom";
+// import Search from "./SearchMovie";
 
-export default function Results() {
+export default function Results(props) {
 
     // console.log(MovieList[0].show);
     const list = MovieList.map((record, index) => {
@@ -16,7 +17,8 @@ export default function Results() {
 
     return (
         <div>
-        <Link to="/home"><button type="submit">Search Again</button></Link>
+        {/* <Link to="/home"><button type="submit" onClick={() =>{props.flagCallback(false)}}>Search Again</button></Link> */}
+        <button type="submit" onClick={() => {props.flagCallback(false)}}>Search Again</button>
             <div>
                 {list}
             </div>
